@@ -2,6 +2,7 @@ import string
 import random
 
 try:
+    print(                                           "Password Generator")
     print()
     length = int(input("Enter Password Length : "))
     print()
