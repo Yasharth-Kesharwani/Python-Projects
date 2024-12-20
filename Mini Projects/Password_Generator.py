@@ -1,10 +1,15 @@
 import string
 import random
+import cutie
 
 try:
     print(                                           "Password Generator")
     print()
     length = int(input("Enter Password Length : "))
+    ldiff = ["Low", "Medium", "Strong"]
+    print("Enter the Password Difficulty : ")
+    diff = ldiff[cutie.select(ldiff, selected_index=0)]
+
     print()
 
     if length > 100:
@@ -15,9 +20,16 @@ try:
     punc = list(string.punctuation)
 
     c_list = []
-    c_list.extend(letters)
-    c_list.extend(numbers)
-    c_list.extend(punc)
+    if diff.lower() == "low" or diff.lower() == "l":
+        c_list.extend(letters)
+    elif diff.lower() == "medium" or diff.lower() == "m":
+        c_list.extend(numbers)
+        c_list.extend(letters)
+    else:
+        c_list.extend(letters)
+        c_list.extend(numbers)
+        c_list.extend(punc)
+    
 
     m = 1
     while (m <= length):

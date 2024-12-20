@@ -1,3 +1,5 @@
+import cutie
+
 #Lambda
 
 # def square(n):
@@ -49,3 +51,8 @@ sum = reduce(sum_f, num)
 print(sum)
 
 #=============================================================================================
+# Cutie Module
+
+#if cutie.prompt_yes_or_no("Are you brave enough to continue?"):
+
+#name = names[cutie.select(names, caption_indices=captions, selected_index=8)]

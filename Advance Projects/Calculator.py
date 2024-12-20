@@ -1,5 +1,7 @@
 import pyttsx3
+import sys
 from math import sqrt
+import cutie
 
 #Functions=====================================================================================================
 
@@ -63,34 +65,49 @@ if __name__ == "__main__":
             print ()
             num_1 = float(num_1)
 
+
+            print("What do you want to do : ")
             speak("What do you want to do : ")
-            oper = (input("What do you want to do : "))
-            if oper == "Q" or oper == "q":
+
+            opers = ["Factorial / Factorisation", "Square", "Cube", "Cube Root", "Square Root", "Addition", "Subtraction", "Multiplication", "Division", "Power", "Find Remainder", "Tetration", "Pentation", "Close"]
+            oper = opers[cutie.select(opers, selected_index=0)]
+
+            for m in range(0,15):
+                sys.stdout.write("\033[F")  # Move cursor up one line
+                sys.stdout.write("\033[K")  # Clear line
+                sys.stdout.flush()          # Force it to update
+            
+            
+            print(f"What do you want to do : {oper}")
+
+            if oper == "Close":
                 print()
                 break
             print ()
-            oper = str(oper)
+
+            oper = str(oper).lower()
+
 
             ans = ""
 
-            if oper == "!" or oper == "Factorial" or oper == "factorial" or oper == "FACTORIAL" or oper == "factorisation" :
+            if oper == "!" or oper == "factorial" or oper == "factorisation" :
                 print()
                 print(f"Answer : {factorial(num_1)} ({factorial_2(num_1)})")
                 speak(f"Your Answer is {factorial(num_1)}")
                 
-            elif oper == "^2" or oper == "Square" or oper == "square" or oper == "Find Square" or oper == "Find square" or oper == "find square" or oper == "SQUARE" or oper == "FIND SQUARE":
+            elif oper == "^2" or oper == "square":
                 print()
                 ans = ("Answer : " + str(num_1 ** 2))
                 
-            elif oper == "^3" or oper == "Cube" or oper == "cube" or oper == "Find Cube" or oper == "Find cube" or oper == "find cube" or oper == "CUBE" or oper == "FIND CUBE":
+            elif oper == "^3" or oper == "cube"or oper == "find cube":
                 print()
                 ans = ("Answer : " + str(num_1 ** 3)) 
                             
-            elif oper == "√" or oper == "Square Root" or oper == "sqrt" or oper == "Find Square Root" or oper == "SQUARE ROOT" or oper == "square root" or oper == "Find SQUARE ROOT" or oper == "find square root" or oper == "Find sqrt" or oper == "FIND SQUARE":
+            elif oper == "√" or oper == "sqrt"or oper == "square root"or oper == "find square root":
                 print()
                 ans = ("Answer : " + str(sqrt(num_1)))
                 
-            elif oper == "∛" or oper == "Cube Root" or oper == "cube root" or oper == "Find Cube Root" or oper == "Find cube root" or oper == "find cube root" or oper == "CUBE ROOT" or oper == "FIND CUBE ROOT":
+            elif oper == "∛" or oper == "cube root" or oper == "find cube root" :
                 print()
                 ans = ("Answer : " + str(cube_root(num_1))) 
                 
@@ -104,31 +121,31 @@ if __name__ == "__main__":
                 print ()
                 num_2 = float(num_2)
 
-                if oper == "+" or oper == "Addition" or oper == "Add" or oper == "add" or oper == "addition":
+                if oper == "+" or oper == "add" or oper == "addition":
                     ans = ("Answer : " + str(num_1 + num_2))
 
-                elif oper == "x" or oper == "*" or oper == "Multiply" or oper == "multiply" or oper == "Multiplication" or oper == "multiplication" or oper == "MULTIPLY" or oper == "MULTIPLICATION":
+                elif oper == "x" or oper == "*" or oper == "multiply" or oper == "multiplication" :
                     ans = ("Answer : " + str(num_1 * num_2))
 
-                elif oper == "-" or oper == "Subtract" or oper == "subtract" or oper == "Subtraction" or oper == "subtraction"or oper == "SUBTRACT" or oper == "SUBTRACTION":    
+                elif oper == "-" or oper == "subtraction" or oper == "subtract" :    
                     ans = ("Answer : " + str(num_1 - num_2))
 
-                elif oper == "/" or oper == "÷" or oper == "Divide" or oper == "divide" or oper == "Division" or oper == "division" or oper == "DIVISION" or oper == "DIVIDE":
+                elif oper == "/" or oper == "÷" or oper == "divide" or oper == "division":
                     ans = ("Answer : " + str(num_1 / num_2))
 
-                elif oper == "**" or oper == "^" or oper == "Power" or oper == "power" or oper == "Powers" or oper == "powers"or oper == "POWER" or oper == "POWERS":
+                elif oper == "**" or oper == "^" or oper == "power" or oper == "powers":
                     ans = ("Answer : " + str(num_1 ** num_2))
 
-                elif oper == "%" or oper == "Remainder" or oper == "remainder" or oper == "Find Remainder" or oper == "Find remainder" or oper == "find remainder"or oper == "REMAINDER" or oper == "FIND REMAINDER":
+                elif oper == "%" or oper == "remainder" or oper == "find remainder":
                     ans = ("Answer : " + str(num_1 % num_2))
 
-                elif oper == "//" or oper == "Quotient" or oper == "quotient" or oper == "Find Quotient" or oper == "Find quotient" or oper == "find quotient" or oper == "QUOTIENT" or oper == "FIND QUOTIENT":
+                elif oper == "//" or oper == "quotient" or oper == "find quotient":
                     ans = ("Answer : " + str(num_1 // num_2))
 
-                elif oper == "↑↑" or oper == "***" or oper == "Tetration" or oper == "tetration" or oper == "TETRATION":
+                elif oper == "↑↑" or oper == "***" or oper == "Tetration" or oper == "tetration":
                     ans = ("Answer : " + str(tetrate(num_1, num_2)))
 
-                elif oper == "↑↑↑" or oper == "****" or oper == "Pentation" or oper == "pentation" or oper == "PENTATION":
+                elif oper == "↑↑↑" or oper == "****" or oper == "Pentation" or oper == "pentation" :
                     ans = ("Answer : " + str(pentate(num_1, num_2)))
 
                 else:

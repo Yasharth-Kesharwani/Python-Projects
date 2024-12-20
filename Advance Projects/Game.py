@@ -1,4 +1,5 @@
 import random
+import cutie
 
 #===========================================================================================================
 
@@ -63,13 +64,15 @@ def Game_Easy():
         except ValueError :
             print("Only Number!")
             print()
-            print(120 * "=")
+            if m == 10:
+                print(120 * "=")
             m += 1    
 
         except Exception as e:
             print(e)
             print()
-            print(120 * "=")
+            if m==10:
+                print(120 * "=")
             m += 1
 
 def Game_Medium():
@@ -134,13 +137,15 @@ def Game_Medium():
         except ValueError :
             print("Only Number!")
             print()
-            print(120 * "=")
+            if m==10:
+                print(120 * "=")
             m += 1    
 
         except Exception as e:
             print(e)
             print()
-            print(120 * "=")
+            if m == 10:
+                print(120 * "=")
             m += 1
 
 def Game_Hard():
@@ -203,13 +208,15 @@ def Game_Hard():
         except ValueError :
             print("Only Number!")
             print()
-            print(120 * "=")
+            if m == 10:
+                print(120 * "=")
             m += 1    
 
         except Exception as e:
             print(e)
             print()
-            print(120 * "=")
+            if m == 10:
+                print(120 * "=")
             m += 1
                
 def Game_Insane():
@@ -272,13 +279,15 @@ def Game_Insane():
         except ValueError :
             print("Only Number!")
             print()
-            print(120 * "=")
+            if m == 8:
+                print(120 * "=")
             m += 1    
 
         except Exception as e:
             print(e)
             print()
-            print(120 * "=")
+            if m == 8:
+                print(120 * "=")
             m += 1
                
 
@@ -292,16 +301,15 @@ if __name__ == "__main__" :
 
         try:
             if play != 1:
-                answer = str(input("Want to Play Again(Y, N) ? "))
-                
-                if answer.lower() == "no" or answer.lower() == "n":
-                    break
-                elif answer.lower() == "yes" or answer.lower() == "y":
+                if Mode == "insane":
+                    if cutie.prompt_yes_or_no("Dare to play again ?"):
+                        pass
+                    else:
+                        break
+                if cutie.prompt_yes_or_no("Want to play again ?"):
                     pass
                 else:
-                    print("You have only Two option - Y or N")
-                    print()  
-                    continue
+                    break
                 print()
 
         except Exception :
@@ -311,8 +319,10 @@ if __name__ == "__main__" :
         while True:
 
             try:
-                Mode = str(input("Enter the Difficulty (Easy/Medium/Hard/Insane) : "))
-                print()
+                print("Enter The Difficulty : ")
+                Modes = ["Easy", "Medium", "Hard", "Insane"]
+
+                Mode = Modes[cutie.select(Modes, selected_index=0)]
                 Mode = Mode.lower()
 
                 if Mode == "easy" or Mode == "e":
@@ -327,18 +337,13 @@ if __name__ == "__main__" :
                     play += 1
                     Game_Hard()
                     break
-                elif Mode == "insane" or Mode == "i":
+                else:
                     play += 1
                     Game_Insane()
-                    break
-                else:
-                    print()
-                    print("You have only three options - Easy, Medium, Hard and Insane")
-                    print()  
-                    continue         
+                    break        
 
-            except Exception :
-                print("Wrong Input !")
+            except Exception as e:
+                print(e)
                 print()
 
 
